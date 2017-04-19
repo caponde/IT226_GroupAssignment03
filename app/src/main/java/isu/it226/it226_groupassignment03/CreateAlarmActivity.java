@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -66,6 +67,20 @@ public class CreateAlarmActivity extends AppCompatActivity
 						validTime = true;
 					}
 				}
+			}
+		});
+		editTime.setOnKeyListener(new View.OnKeyListener()
+		{
+			@Override public boolean onKey(View v, int keyCode, KeyEvent event)
+			{
+				String str = editTime.getText().toString();
+				if(keyCode == KeyEvent.KEYCODE_DEL && str.length() == 3)
+				{
+					str = str.substring(0);
+					editTime.setText(str);
+				}
+					
+				return false;
 			}
 		});
 		
